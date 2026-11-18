@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   js:
-    name: tracker, react-native, server (bun)
+    name: tracker, react-native, server incl. MCP (bun)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

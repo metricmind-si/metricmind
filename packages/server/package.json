@@ -1,7 +1,7 @@
 {
   "name": "@metricmind/server",
-  "version": "0.1.0",
-  "description": "MetricMind server-side helpers: server events and AI crawler reads. No dependencies.",
+  "version": "0.2.0",
+  "description": "MetricMind server-side helpers: server events, MCP tool-call analytics and AI crawler reads. No runtime dependencies.",
   "license": "MIT",
   "type": "module",
   "homepage": "https://metricmind.si",
@@ -13,6 +13,8 @@
   "bugs": "https://github.com/metricmind-si/metricmind/issues",
   "keywords": [
     "analytics",
+    "mcp",
+    "model-context-protocol",
     "ai-crawlers",
     "server-side-tracking",
     "metricmind"
@@ -27,6 +29,10 @@
     "./events": {
       "types": "./dist/server.d.ts",
       "default": "./dist/server.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp.d.ts",
+      "default": "./dist/mcp.js"
     },
     "./crawlers": {
       "types": "./dist/crawlers.d.ts",
@@ -43,5 +49,17 @@
     "test": "bun test",
     "typecheck": "tsc --noEmit -p .",
     "prepublishOnly": "bun run typecheck && bun test && bun run build"
+  },
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": ">=1.10.0"
+  },
+  "peerDependenciesMeta": {
+    "@modelcontextprotocol/sdk": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "^4.1.12"
   }
 }

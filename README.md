@@ -12,7 +12,7 @@ This repository holds the open-source code that runs on your pages, in your apps
 | [`packages/ios`](packages/ios) | iOS SDK (Swift, UIKit/SwiftUI, MetricKit) | Swift Package Manager: this repository's URL |
 | [`packages/android`](packages/android) | Android SDK (Kotlin, no dependencies besides the Android framework) | JitPack, or copy two files |
 | [`packages/flutter`](packages/flutter) | Flutter SDK (pure Dart, no plugins) | pub.dev `metricmind` |
-| [`packages/server`](packages/server) | Server helpers: server-side events (`createTracker`) and AI crawler reads (`trackCrawler`) | npm `@metricmind/server` |
+| [`packages/server`](packages/server) | Server helpers: server-side events (`createTracker`), MCP tool-call analytics (`createMcpAnalytics`) and AI crawler reads (`trackCrawler`) | npm `@metricmind/server` |
 | [`examples/`](examples) | Sample apps for Android (Gradle), iOS (XcodeGen `project.yml`) and Flutter; they send to a local endpoint, so set your own `site` and `endpoint` | |
 
 ## What's not in it

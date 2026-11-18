@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2026-11-18)
+
+- `@metricmind/server/mcp`: MCP tool-call analytics for servers built with the official TypeScript SDK.
+  `createMcpAnalytics(options).observe(server)` (or `observeMcp(server, options)`) records each `tools/call`:
+  tool, duration, success, result size, error category and message, server release, environment, client and
+  session. Arguments and results are never sent. No runtime dependencies; `@modelcontextprotocol/sdk` is an
+  optional peer.
+
 ## 0.1.0 (2026-11-18)
 
 First open-source release, under the MIT licence.
