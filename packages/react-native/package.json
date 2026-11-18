@@ -1,0 +1,29 @@
+{
+  "name": "@metricmind/react-native",
+  "version": "0.1.0",
+  "description": "MetricMind for React Native: cookieless screens, sessions, events, users, errors and crashes. One file, no native module.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://metricmind.si",
+  "repository": { "type": "git", "url": "git+https://github.com/metricmind-si/metricmind.git", "directory": "packages/react-native" },
+  "bugs": "https://github.com/metricmind-si/metricmind/issues",
+  "keywords": ["analytics", "privacy", "react-native", "expo", "crash-reporting", "metricmind"],
+  "files": ["dist", "src", "README.md", "LICENSE"],
+  "main": "./dist/metricmind.js",
+  "types": "./dist/metricmind.d.ts",
+  "react-native": "./src/metricmind.ts",
+  "exports": {
+    ".": { "types": "./dist/metricmind.d.ts", "react-native": "./src/metricmind.ts", "default": "./dist/metricmind.js" },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p .",
+    "prepublishOnly": "bun run typecheck && bun test && bun run build"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.70"
+  }
+}

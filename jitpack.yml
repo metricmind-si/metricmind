@@ -1,0 +1,5 @@
+# JitPack builds the Android library from a Git tag: com.github.metricmind-si.metricmind:android:<tag>
+jdk:
+  - openjdk17
+install:
+  - ./gradlew :android:publishReleasePublicationToMavenLocal

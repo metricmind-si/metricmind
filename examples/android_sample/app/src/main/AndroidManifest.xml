@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Cleartext only because the sample talks to a local ingest (http://10.0.2.2:3200). -->
+    <application android:name=".SampleApp" android:label="MetricMind native" android:usesCleartextTraffic="true">
+        <activity android:name=".MainActivity" android:label="Home" android:exported="true" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="mmnative" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ListingActivity" android:label="Listing" android:exported="false" />
+    </application>
+</manifest>

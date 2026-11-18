@@ -1,0 +1,47 @@
+{
+  "name": "@metricmind/server",
+  "version": "0.1.0",
+  "description": "MetricMind server-side helpers: server events and AI crawler reads. No dependencies.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://metricmind.si",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metricmind-si/metricmind.git",
+    "directory": "packages/server"
+  },
+  "bugs": "https://github.com/metricmind-si/metricmind/issues",
+  "keywords": [
+    "analytics",
+    "ai-crawlers",
+    "server-side-tracking",
+    "metricmind"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./events": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    },
+    "./crawlers": {
+      "types": "./dist/crawlers.d.ts",
+      "default": "./dist/crawlers.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p .",
+    "prepublishOnly": "bun run typecheck && bun test && bun run build"
+  }
+}

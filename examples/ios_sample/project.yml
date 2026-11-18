@@ -1,0 +1,33 @@
+# Native iOS sample (SwiftUI) using the local Swift package. Generate with `xcodegen`, then:
+#   xcodebuild -project MetricMindSample.xcodeproj -scheme MetricMindSample -destination 'platform=iOS Simulator,name=MetricMind iPhone' MARKETING_VERSION=3.0.1 build
+name: MetricMindSample
+options:
+  bundleIdPrefix: si.metricmind
+  deploymentTarget:
+    iOS: "16.0"
+packages:
+  MetricMind:
+    path: ../..
+targets:
+  MetricMindSample:
+    type: application
+    platform: iOS
+    sources: [Sample]
+    dependencies:
+      - package: MetricMind
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: si.metricmind.iossample
+        MARKETING_VERSION: "3.0.0"
+        CURRENT_PROJECT_VERSION: "9"
+        SWIFT_VERSION: "6.0"
+    info:
+      path: Sample/Info.plist
+      properties:
+        CFBundleDisplayName: MetricMind iOS
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        # Only because the sample talks to a local ingest over http://localhost.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true

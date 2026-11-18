@@ -1,0 +1,30 @@
+# JS
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Swift
+.build/
+.swiftpm/
+examples/ios_sample/*.xcodeproj/
+xcuserdata/
+DerivedData/
+
+# Gradle / Android
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+packages/flutter/pubspec.lock
+
+# OS / env
+.DS_Store
+.env
+.env.*

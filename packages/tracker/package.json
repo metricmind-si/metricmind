@@ -1,0 +1,30 @@
+{
+  "name": "@metricmind/tracker",
+  "version": "0.1.0",
+  "description": "MetricMind's browser script (mm.js): cookieless page views, events, Web Vitals, errors and feature flags in ~12 KB gzip.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://metricmind.si",
+  "repository": { "type": "git", "url": "git+https://github.com/metricmind-si/metricmind.git", "directory": "packages/tracker" },
+  "bugs": "https://github.com/metricmind-si/metricmind/issues",
+  "keywords": ["analytics", "privacy", "cookieless", "web-vitals", "metricmind"],
+  "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    "./mm.js": "./dist/mm.js",
+    "./survey.js": "./dist/survey.js",
+    "./types": { "types": "./dist/types.d.ts" },
+    "./package.json": "./package.json"
+  },
+  "unpkg": "dist/mm.js",
+  "jsdelivr": "dist/mm.js",
+  "sideEffects": true,
+  "scripts": {
+    "build": "bun build.ts && tsc -p tsconfig.types.json",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p .",
+    "prepublishOnly": "bun run typecheck && bun test && bun run build"
+  },
+  "devDependencies": {
+    "web-vitals": "5.3.0"
+  }
+}

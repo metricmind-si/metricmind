@@ -1,0 +1,26 @@
+name: metricmind
+description: Privacy-first analytics for Flutter apps on iOS and Android. Cookieless screens, sessions, events, errors and crashes. Pure Dart, no plugins.
+version: 0.1.0
+homepage: https://metricmind.si
+repository: https://github.com/metricmind-si/metricmind/tree/main/packages/flutter
+issue_tracker: https://github.com/metricmind-si/metricmind/issues
+topics:
+  - analytics
+  - privacy
+  - crash-reporting
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+platforms:
+  android:
+  ios:
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

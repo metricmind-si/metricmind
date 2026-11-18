@@ -1,0 +1,3 @@
+[install]
+# Peer dependencies (react-native) are the app's; tests mock them and typecheck against test/react-native.d.ts.
+peer = false
