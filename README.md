@@ -11,7 +11,7 @@ This repository holds the open-source code that runs on your pages, in your apps
 | [`packages/react-native`](packages/react-native) | React Native / Expo SDK, one TypeScript file, no native module | npm `@metricmind/react-native` |
 | [`packages/ios`](packages/ios) | iOS SDK (Swift, UIKit/SwiftUI, MetricKit) | Swift Package Manager: this repository's URL |
 | [`packages/android`](packages/android) | Android SDK (Kotlin, no dependencies besides the Android framework) | JitPack, or copy two files |
-| [`packages/flutter`](packages/flutter) | Flutter SDK (pure Dart, no plugins) | pub.dev `metricmind` |
+| [`packages/flutter`](packages/flutter) | Flutter SDK (pure Dart, no plugins) | git dependency (pub.dev to follow) |
 | [`packages/server`](packages/server) | Server helpers: server-side events (`createTracker`), MCP tool-call analytics (`createMcpAnalytics`) and AI crawler reads (`trackCrawler`) | npm `@metricmind/server` |
 | [`examples/`](examples) | Sample apps for Android (Gradle), iOS (XcodeGen `project.yml`) and Flutter; they send to a local endpoint, so set your own `site` and `endpoint` | |
 
@@ -23,11 +23,8 @@ takes an `endpoint` option, but this repository contains no server to point it a
 
 ## Install
 
-> **Packages on npm and pub.dev are on their way.** Until they're live: React Native, copy
-> [`packages/react-native/src/metricmind.ts`](packages/react-native/src/metricmind.ts) into your app; Flutter, use a
-> git dependency (`metricmind: {git: {url: https://github.com/metricmind-si/metricmind, path: packages/flutter, ref: "0.1.0"}}`);
-> server helpers, copy the file from [`packages/server/src`](packages/server/src). The script tag, Swift Package Manager
-> and JitPack work today.
+The JavaScript packages are on npm. Flutter is not on pub.dev yet: until it is, use the git dependency shown under
+Flutter below. The script tag, npm, Swift Package Manager and JitPack all work today.
 
 **Website**
 
@@ -35,19 +32,34 @@ takes an `endpoint` option, but this repository contains no server to point it a
 <script src="https://cdn.metricmind.si/mm.js" data-site="YOUR_SITE_ID" defer></script>
 ```
 
-**React Native**: `npm install @metricmind/react-native`, then
+Or from npm, to serve the file yourself: `npm install @metricmind/tracker` (the script is `dist/mm.js`).
+
+**React Native**: `npm install @metricmind/react-native @react-native-async-storage/async-storage`, then
 `MetricMind.init({ site: "YOUR_SITE_ID", appVersion: "1.0.0", storage: AsyncStorage })`.
 
 **iOS**: in Xcode, File → Add Package Dependencies → `https://github.com/metricmind-si/metricmind`, then
 `MetricMind.configure(site: "YOUR_SITE_ID")` at launch.
 
 **Android**: add `maven { url = uri("https://jitpack.io") }` to your repositories and
-`implementation("com.github.metricmind-si.metricmind:android:0.1.0")`, then
+`implementation("com.github.metricmind-si.metricmind:android:0.2.0")`, then
 `MetricMind.init(this, site = "YOUR_SITE_ID")` in `Application.onCreate()`.
 
-**Flutter**: `flutter pub add metricmind`, then `await MetricMind.init(site: 'YOUR_SITE_ID', ...)`.
+**Server** (Node 18+, Bun, Deno, edge): `npm install @metricmind/server`, then
+`createTracker` from `@metricmind/server/events`, `createMcpAnalytics` from `@metricmind/server/mcp`, or the
+crawler helper from `@metricmind/server/crawlers`.
 
-**Server**: `npm install @metricmind/server`; see [packages/server](packages/server).
+**Flutter**: until the package is on pub.dev, add a git dependency to `pubspec.yaml`:
+
+```yaml
+dependencies:
+  metricmind:
+    git:
+      url: https://github.com/metricmind-si/metricmind
+      path: packages/flutter
+      ref: "0.2.0"
+```
+
+then `await MetricMind.init(site: 'YOUR_SITE_ID', ...)`.
 
 Each package's README has the details. Your site ID is in the MetricMind dashboard.
 

@@ -1,0 +1,40 @@
+name: Publish to npm
+
+# Trusted Publishing (OIDC): no npm token is stored. Each package must list this
+# workflow as a trusted publisher on npmjs.com (see RELEASING.md).
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
+      - name: Use an npm that supports trusted publishing (11.5.1 or newer)
+        run: npm install -g npm@latest
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - name: Publish packages whose version is not on npm yet
+        run: |
+          for dir in packages/tracker packages/react-native packages/server; do
+            name="$(node -p "require('./$dir/package.json').name")"
+            version="$(node -p "require('./$dir/package.json').version")"
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "$name@$version is already on npm, skipping"
+              continue
+            fi
+            echo "Publishing $name@$version"
+            (cd "$dir" && npm publish --access public --provenance)
+          done

@@ -17,4 +17,6 @@ Pull requests:
 This repository is exported from MetricMind's internal monorepo. A maintainer applies an accepted pull request
 there, and the next export brings it back here with your authorship kept in the commit.
 
+Maintainers: see [RELEASING.md](RELEASING.md) for how releases are made.
+
 By contributing you agree that your contribution is licensed under the MIT licence of this repository.
