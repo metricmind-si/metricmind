@@ -41,7 +41,7 @@ Or from npm, to serve the file yourself: `npm install @metricmind/tracker` (the 
 `MetricMind.configure(site: "YOUR_SITE_ID")` at launch.
 
 **Android**: add `maven { url = uri("https://jitpack.io") }` to your repositories and
-`implementation("com.github.metricmind-si.metricmind:android:0.2.0")`, then
+`implementation("com.github.metricmind-si:metricmind:0.2.0")`, then
 `MetricMind.init(this, site = "YOUR_SITE_ID")` in `Application.onCreate()`.
 
 **Server** (Node 18+, Bun, Deno, edge): `npm install @metricmind/server`, then

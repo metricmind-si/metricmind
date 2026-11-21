@@ -9,7 +9,7 @@ With JitPack:
 // settings.gradle.kts
 dependencyResolutionManagement { repositories { google(); mavenCentral(); maven { url = uri("https://jitpack.io") } } }
 // app/build.gradle.kts
-dependencies { implementation("com.github.metricmind-si.metricmind:android:0.1.0") }
+dependencies { implementation("com.github.metricmind-si:metricmind:0.2.0") }
 ```
 
 Or copy `src/main/kotlin/si/metricmind/Tracker.kt` and `MetricMind.kt` into your app (package `si.metricmind`);
